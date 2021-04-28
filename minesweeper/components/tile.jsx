@@ -14,8 +14,11 @@ class Tile extends React.Component {
 
     notBombed(e) {
         e.preventDefault();
-    
-        this.props.updateGame(this.props.tile)
+        if (e.altKey) {
+            this.props.updateGame(this.props.tile, true)
+        } else { 
+            this.props.updateGame(this.props.tile, false)
+        }
     }
 
 
@@ -23,7 +26,8 @@ class Tile extends React.Component {
         return (
             //if not explored then onClick notBombed => props.updateGame(pos, change)
             <span className="tile" onClick={this.notBombed}>
-                {this.props.tile.explored ? '' : "T"}
+                {/* {this.props.tile.flagged ? "F" : ""}  */}
+                {this.props.tile.bombed && this.props.tile.explored ? `\u1F911` : this.props.tile.explored ? this.props.tile.adjacentBombCount() : "T"}
                 
             </span>
         )

@@ -422,7 +422,12 @@ var Tile = /*#__PURE__*/function (_React$Component) {
     key: "notBombed",
     value: function notBombed(e) {
       e.preventDefault();
-      this.props.updateGame(this.props.tile);
+
+      if (e.altKey) {
+        this.props.updateGame(this.props.tile, true);
+      } else {
+        this.props.updateGame(this.props.tile, false);
+      }
     }
   }, {
     key: "render",
@@ -433,7 +438,7 @@ var Tile = /*#__PURE__*/function (_React$Component) {
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
           className: "tile",
           onClick: this.notBombed
-        }, this.props.tile.explored ? '' : "T")
+        }, this.props.tile.bombed && this.props.tile.explored ? "\u1F911" : this.props.tile.explored ? this.props.tile.adjacentBombCount() : "T")
       );
     }
   }]);
