@@ -5,7 +5,7 @@ import App from './app'
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
     console.log(root);
-    const hello = React.createElement('h1', null, ["hello from React!"]);
+    // const hello = React.createElement('h1', null, ["hello from React!"]);
 
 
     ReactDOM.render(<App />, root)

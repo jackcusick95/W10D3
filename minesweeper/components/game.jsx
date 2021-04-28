@@ -1,41 +1,30 @@
 import React from 'react';
-import Minesweeper, { Tile, Board } from './minesweeper';
-import TileFunc from './tile'; 
+import * as Minesweeper from './minesweeper';
+import Board from './board'
 
 class Game extends React.Component {
     constructor(props) {
         super(props);
-        const newBoard = new Board(5,4)
+        const newBoard = new Minesweeper.Board(5,4)
         this.state = {
-            board : newBoard.grid
+            board : newBoard
         }
         this.updateGame = this.updateGame.bind(this)
-
-       console.log(this.state.board)
     }
 
-    updateGame() {
-
+    updateGame(tile, boolean) {
+        // debugger
+        tile.explore();
+        this.setState({
+            board : this.state.board
+        })
     }
 
     render() {
         return (
-            <div className='board'>
-                <ul>
-                {this.state.board.map((el, idx) => {
-                    debugger
-                    return <li key={idx}>{el.map((tile, idx) => {
-                        tile = < TileFunc key={idx}/>;
-                        return tile; 
-                    })}</li>
-                    // return <Tile/>
-                })}
-                </ul>
-                <span>
-                {/* {this.updateGame} */}
-                </span>
+            <div className='game'>
+                <Board board={this.state.board} updateGame = {this.updateGame} />
             </div>
-            // <h1>hi</h1>
         )
     }
 }
