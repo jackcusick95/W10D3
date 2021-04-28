@@ -41,6 +41,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _minesweeper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./minesweeper */ "./components/minesweeper.js");
+/* harmony import */ var _tile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tile */ "./components/tile.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66,6 +67,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Game = /*#__PURE__*/function (_React$Component) {
   _inherits(Game, _React$Component);
 
@@ -77,7 +79,7 @@ var Game = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Game);
 
     _this = _super.call(this, props);
-    var newBoard = new _minesweeper__WEBPACK_IMPORTED_MODULE_1__.Board(5, 2);
+    var newBoard = new _minesweeper__WEBPACK_IMPORTED_MODULE_1__.Board(5, 4);
     _this.state = {
       board: newBoard.grid
     };
@@ -98,7 +100,12 @@ var Game = /*#__PURE__*/function (_React$Component) {
         debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
           key: idx
-        }, "...");
+        }, el.map(function (tile, idx) {
+          tile = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_tile__WEBPACK_IMPORTED_MODULE_2__.default, {
+            key: idx
+          });
+          return tile;
+        })); // return <Tile/>
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null)) // <h1>hi</h1>
       ;
     }
@@ -276,6 +283,29 @@ var Board = /*#__PURE__*/function () {
 
   return Board;
 }();
+
+/***/ }),
+
+/***/ "./components/tile.jsx":
+/*!*****************************!*\
+  !*** ./components/tile.jsx ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./game */ "./components/game.jsx");
+
+
+
+var TileFunc = function TileFunc(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "\"T\"");
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TileFunc);
 
 /***/ }),
 

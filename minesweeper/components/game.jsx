@@ -1,10 +1,11 @@
 import React from 'react';
 import Minesweeper, { Tile, Board } from './minesweeper';
+import TileFunc from './tile'; 
 
 class Game extends React.Component {
     constructor(props) {
         super(props);
-        const newBoard = new Board(5,2)
+        const newBoard = new Board(5,4)
         this.state = {
             board : newBoard.grid
         }
@@ -23,7 +24,11 @@ class Game extends React.Component {
                 <ul>
                 {this.state.board.map((el, idx) => {
                     debugger
-                    return <li key={idx}>...</li>
+                    return <li key={idx}>{el.map((tile, idx) => {
+                        tile = < TileFunc key={idx}/>;
+                        return tile; 
+                    })}</li>
+                    // return <Tile/>
                 })}
                 </ul>
                 <span>
